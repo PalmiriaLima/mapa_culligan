@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de Autorizadas Culligan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="https://culligan.com.br/wp-content/uploads/2024/11/logomarca-culligan.png" alt="Logo Culligan" class="logo" />
+    <h1>Verifique se sua região é atendida</h1>
+  </header>
+
+  <main>
+    <input type="text" id="cepInput" placeholder="Digite seu CEP" />
+    <button onclick="verificarCEP()">Verificar</button>
+    <p id="resultado"></p>
+    <div id="mapa"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
