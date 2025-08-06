@@ -33,8 +33,9 @@ header {
   position: absolute;
   top: 0;
   width: 100%;
-  text-align: center;
-  padding: 20px;
+  padding: 10px 20px;
+  display: flex;
+  aling-items: center;
   background-color: transparent;
   color: #000;
   z-index: 1000;
