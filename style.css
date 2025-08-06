@@ -32,24 +32,25 @@ body {
 header {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   padding: 10px 20px;
   display: flex;
-  aling-items: center;
+  align-items: center;
   background-color: transparent;
-  color: #000;
   z-index: 1000;
 }
 
-header img {
+header .logo {
   height: 40px;
-  margin-bottom: 10px;
+  /* deixar no canto esquerdo */
 }
 
-header h2, header p {
-  margin: 5px 0;
-  color: #000;
+header .resultado {
+  margin-left: auto; /* empurra para a direita */
+  font-weight: bold;
   text-shadow: 0 0 5px #fff;
+  color: #000;
 }
 
 .busca {
