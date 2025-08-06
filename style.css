@@ -1,3 +1,5 @@
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -31,25 +33,24 @@ body {
 header {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   padding: 10px 20px;
   display: flex;
-  align-items: center;
+  aling-items: center;
   background-color: transparent;
+  color: #000;
   z-index: 1000;
 }
 
-header .logo {
+header img {
   height: 40px;
-  /* deixar no canto esquerdo */
+  margin-bottom: 10px;
 }
 
-header .resultado {
-  margin-left: auto; /* empurra para a direita */
-  font-weight: bold;
-  text-shadow: 0 0 5px #fff;
+header h2, header p {
+  margin: 5px 0;
   color: #000;
+  text-shadow: 0 0 5px #fff;
 }
 
 .busca {
@@ -78,4 +79,10 @@ header .resultado {
   padding: 10px 15px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.resultado {
+  margin-top: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff;
 }
