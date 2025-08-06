@@ -81,8 +81,3 @@ header .resultado {
   cursor: pointer;
 }
 
-.resultado {
-  margin-top: 10px;
-  font-weight: bold;
-  text-shadow: 0 0 5px #fff;
-}
