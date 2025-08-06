@@ -33,19 +33,17 @@ const map = L.map('map', {
 
 map.fitBounds([[-33.75, -73.99], [5.27, -34.79]]);
 
-// Mapa claro
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; <a href="https://carto.com/">CARTO</a> | Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
 }).addTo(map);
 
-// Estados com atendimento
 fetch('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson')
   .then(res => res.json())
   .then(data => {
     L.geoJSON(data, {
       style: feature => ({
         color: "#004080",
-        weight: 1
+        weight: 1,
       }),
       onEachFeature: (feature, layer) => {
         const nomeEstado = feature.properties.name;
@@ -58,18 +56,17 @@ fetch('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/p
           "Rondônia": "RO", "Roraima": "RR", "Santa Catarina": "SC", "São Paulo": "SP",
           "Sergipe": "SE", "Tocantins": "TO"
         };
-
         const sigla = siglas[nomeEstado] || nomeEstado;
-        const centro = layer.getBounds().getCenter();
 
+        layer.bindPopup(nomeEstado);
+
+        const centro = layer.getBounds().getCenter();
         const label = L.tooltip({
           permanent: true,
           direction: "center",
           className: "estado-label"
         }).setContent(sigla).setLatLng(centro);
-
         map.addLayer(label);
-        layer.bindPopup(nomeEstado);
       }
     }).addTo(map);
   });
@@ -107,6 +104,7 @@ async function verificarDistancia() {
     if (!pontoLatLng) continue;
 
     const distance = map.distance(userLocation, pontoLatLng) / 1000;
+
     if (distance <= 70) {
       document.getElementById('resultado').innerText = `Cobertura disponível: ${ponto.nome} está a ${distance.toFixed(2)} km.`;
       L.circle(userLocation, { radius: 70000, color: "blue", fillOpacity: 0.1 }).addTo(map);
@@ -129,6 +127,11 @@ async function verTodosPontos() {
     const pontoLatLng = await getLatLng(ponto.cep);
     if (pontoLatLng) {
       L.marker(pontoLatLng).addTo(map).bindPopup(ponto.nome);
+      L.circle(pontoLatLng, {
+        radius: 70000,
+        color: 'blue',
+        fillOpacity: 0.1
+      }).addTo(map);
     }
   }
 }
